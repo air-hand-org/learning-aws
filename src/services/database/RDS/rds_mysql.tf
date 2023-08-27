@@ -22,6 +22,7 @@ resource "aws_db_instance" "rds_mysql" {
   multi_az                   = false
   availability_zone          = var.az_name
   backup_retention_period    = 1
+  ca_cert_identifier         = "rds-ca-rsa2048-g1"
 }
 
 #tfsec:ignore:aws-rds-encrypt-instance-storage-data
@@ -44,6 +45,7 @@ resource "aws_db_instance" "rds_mysql2" {
   multi_az                   = false
   availability_zone          = var.az_name
   deletion_protection        = true
+  ca_cert_identifier         = "rds-ca-rsa2048-g1"
 }
 
 # route53 weighted record sets + roundrobin for CNAME
